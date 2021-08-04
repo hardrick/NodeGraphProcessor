@@ -864,11 +864,18 @@ namespace GraphProcessor
 			if (typeof(IList).IsAssignableFrom(field.FieldType))
 				EnableSyncSelectionBorderHeight();
 
-			element.RegisterValueChangeCallback(e => {
+			//DOWNGRADE CHANGE
+			element.RegisterCallback<ChangeEvent<object>>(e => {
 				UpdateFieldVisibility(field.Name, field.GetValue(nodeTarget));
 				valueChangedCallback?.Invoke();
 				NotifyNodeChanged();
 			});
+
+			//element.RegisterValueChangeCallback(e => {
+			//	UpdateFieldVisibility(field.Name, field.GetValue(nodeTarget));
+			//	valueChangedCallback?.Invoke();
+			//	NotifyNodeChanged();
+			//});
 
 			// Disallow picking scene objects when the graph is not linked to a scene
 			if (element != null && !owner.graph.IsLinkedToScene())
