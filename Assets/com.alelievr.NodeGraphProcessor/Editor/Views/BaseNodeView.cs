@@ -206,11 +206,12 @@ namespace GraphProcessor
 			void OpenTitleEditor()
 			{
 				// show title textbox
-				titleTextField.style.display = DisplayStyle.Flex;
-				titleLabel.style.display = DisplayStyle.None;
+				titleTextField.style.display = DisplayStyle.Flex;		
+				titleLabel.style.display = DisplayStyle.None;	
 				titleTextField.focusable = true;
 
-				titleTextField.SetValueWithoutNotify(title);
+				titleTextField.SetValueWithoutNotify(title);	
+				titleTextField.delegatesFocus = true;
 				titleTextField.Focus();
 				titleTextField.SelectAll();
 			}
